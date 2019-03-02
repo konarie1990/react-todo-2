@@ -3,31 +3,21 @@ import TodoItems from "./TodoItems";
 import "./TodoList.css";
 
 class TodoList extends Component {
-  constructor(props) {
-    super(props);
+  state = {
+    items: []
+  };
 
-    this.state = {
-      items: []
-    };
-
-    this.addItem = this.addItem.bind(this);
-    this.deleteItem = this.deleteItem.bind(this);
-  }
-
-  deleteItem(key) {
+  deleteItem = key => {
     const filteredItems = this.state.items.filter(item => item.key !== key);
 
     this.setState({
       items: filteredItems
     });
-  }
+  };
 
-  addItem(e) {
+  addItem = e => {
     if (this._inputElement.value !== "") {
-      const newItem = {
-        text: this._inputElement.value,
-        key: Date.now()
-      };
+      const newItem = { text: this._inputElement.value, key: Date.now() };
 
       this.setState(prevState => {
         return {
@@ -39,7 +29,7 @@ class TodoList extends Component {
     }
 
     e.preventDefault();
-  }
+  };
   render() {
     return (
       <div className="todoListMain">
