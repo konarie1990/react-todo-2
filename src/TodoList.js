@@ -15,9 +15,7 @@ class TodoList extends Component {
   }
 
   deleteItem(key) {
-    var filteredItems = this.state.items.filter(function(item) {
-      return item.key !== key;
-    });
+    const filteredItems = this.state.items.filter(item => item.key !== key);
 
     this.setState({
       items: filteredItems
@@ -40,8 +38,6 @@ class TodoList extends Component {
       this._inputElement.value = "";
     }
 
-    console.log(this.state.items);
-
     e.preventDefault();
   }
   render() {
@@ -51,7 +47,7 @@ class TodoList extends Component {
           <form onSubmit={this.addItem}>
             <input
               ref={a => (this._inputElement = a)}
-              placeholder="enter task"
+              placeholder="type something"
             />
             <button type="submit">add</button>
           </form>
